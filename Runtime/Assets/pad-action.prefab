@@ -71,7 +71,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1294430044017469222, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_Name
-      value: north
+      value: pad_north
       objectReference: {fileID: 0}
     - target: {fileID: 3708290667343527073, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_LocalRotation.w
@@ -197,7 +197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1294430044017469222, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_Name
-      value: east
+      value: pad_east
       objectReference: {fileID: 0}
     - target: {fileID: 1880552031297194085, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_text
@@ -351,7 +351,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1294430044017469222, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_Name
-      value: west
+      value: pad_west
       objectReference: {fileID: 0}
     - target: {fileID: 1880552031297194085, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_text
@@ -513,7 +513,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1294430044017469222, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_Name
-      value: south
+      value: pad_south
       objectReference: {fileID: 0}
     - target: {fileID: 1880552031297194085, guid: 49e165c4594a7b54eb9777db147deb12, type: 3}
       propertyPath: m_text

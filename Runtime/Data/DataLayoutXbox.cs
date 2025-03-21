@@ -13,61 +13,36 @@ namespace fwp.gamepad.layout
         LayoutJoystickDual, LayoutJoystickActionsNESW,
         LayoutJoystickActionsMenus, LayoutJoystickDirectionalPad
     {
-        [Header("dual sticks")]
-
-        public LayoutIcon joystickLeft;
-        public LayoutIcon joystickRight;
-
-        public LayoutInputJoystick getLeftStick() => new LayoutInputJoystick()
+        public DataLayoutXbox()
         {
-            input = InputJoystickSide.LEFT,
-            icon = joystickLeft.icon
-        };
+            addSticks<InputJoystickSide>();
+            addPads<InputButtons>();
+            addDpads<InputDPad>();
+        }
 
-        public LayoutInputJoystick getRightStick() => new LayoutInputJoystick()
-        {
-            input = InputJoystickSide.RIGHT,
-            icon = joystickLeft.icon
-        };
+        public LayoutInputJoystick getLeftStick() => get(InputJoystickSide.LEFT);
+        public LayoutInputJoystick getRightStick() => get(InputJoystickSide.RIGHT);
 
-        [Header("actions")]
-        public LayoutIcon action_N;
-        public LayoutIcon action_E;
-        public LayoutIcon action_S;
-        public LayoutIcon action_W;
+        public LayoutInputAction getActionNorth() => get(InputButtons.PAD_NORTH);
+        public LayoutInputAction getActionEast() => get(InputButtons.PAD_EAST);
+        public LayoutInputAction getActionSouth() => get(InputButtons.PAD_SOUTH);
+        public LayoutInputAction getActionWest() => get(InputButtons.PAD_WEST);
 
-        public LayoutInputAction getActionNorth() => new LayoutInputAction() { input = InputButtons.PAD_NORTH, icon = action_N.icon };
-        public LayoutInputAction getActionEast() => new LayoutInputAction() { input = InputButtons.PAD_EAST, icon = action_E.icon };
-        public LayoutInputAction getActionSouth() => new LayoutInputAction() { input = InputButtons.PAD_SOUTH, icon = action_S.icon };
-        public LayoutInputAction getActionWest() => new LayoutInputAction() { input = InputButtons.PAD_WEST, icon = action_W.icon };
+        public LayoutInputAction getActionStart() => get(InputButtons.START);
+        public LayoutInputAction getActionSelect() => get(InputButtons.RETURN);
 
-        public LayoutIcon action_START;
-        public LayoutIcon action_SELECT;
+        public LayoutInputDpad getDpadNorth() => get(InputDPad.DPAD_NORTH);
+        public LayoutInputDpad getDpadEast() => get(InputDPad.DPAD_EAST);
+        public LayoutInputDpad getDpadSouth() => get(InputDPad.DPAD_SOUTH);
+        public LayoutInputDpad getDpadWest() => get(InputDPad.DPAD_WEST);
 
-        public LayoutInputAction getActionStart() => new LayoutInputAction() { input = InputButtons.START, icon = action_START.icon };
-        public LayoutInputAction getActionSelect() => new LayoutInputAction() { input = InputButtons.RETURN, icon = action_SELECT.icon };
+        public override LayoutInputJoystick[] getJoysticks() =>
+            new[] { getLeftStick(), getRightStick() };
 
-        [Header("dpad")]
-        public LayoutIcon dpad_N;
-        public LayoutIcon dpad_E;
-        public LayoutIcon dpad_S;
-        public LayoutIcon dpad_W;
+        public override LayoutInputDpad[] getDpads() =>
+            new[] { getDpadNorth(), getDpadEast(), getDpadSouth(), getDpadWest() };
 
-        public LayoutInputDpad getDpadNorth() => new LayoutInputDpad() { input = InputDPad.DPAD_NORTH, icon = dpad_N.icon };
-        public LayoutInputDpad getDpadEast() => new LayoutInputDpad() { input = InputDPad.DPAD_EAST, icon = dpad_E.icon };
-        public LayoutInputDpad getDpadSouth() => new LayoutInputDpad() { input = InputDPad.DPAD_SOUTH, icon = dpad_S.icon };
-        public LayoutInputDpad getDpadWest() => new LayoutInputDpad() { input = InputDPad.DPAD_WEST, icon = dpad_W.icon };
-
-        public override LayoutInputJoystick[] getSticks() => new LayoutInputJoystick[] { getLeftStick(), getRightStick() };
-
-        public override LayoutInputAction[] getActions() => new LayoutInputAction[]
-        {
-            getActionNorth(), getActionEast(), getActionSouth(), getActionWest()
-        };
-
-        public override LayoutInputDpad[] getDpads() => new LayoutInputDpad[]
-        {
-            getDpadNorth(), getDpadEast(), getDpadSouth(), getDpadWest()
-        };
+        public override LayoutInputAction[] getActions() =>
+            new[] { getActionNorth(), getActionEast(), getActionSouth(), getActionWest() };
     }
 }

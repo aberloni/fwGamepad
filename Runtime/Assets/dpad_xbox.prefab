@@ -20,9 +20,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -824229302780745415, guid: 4efa26c7a47f4a840a37261ca234475d, type: 3}
+    - target: {fileID: 1989245777220264052, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
+      propertyPath: m_Name
+      value: dpad_north
+      objectReference: {fileID: 0}
     - target: {fileID: 2123027557650472062, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
       propertyPath: m_Name
-      value: pad-action_xbox
+      value: dpad_xbox
       objectReference: {fileID: 0}
     - target: {fileID: 2293901456739994779, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
       propertyPath: m_Sprite
@@ -31,6 +35,10 @@ PrefabInstance:
     - target: {fileID: 2293901456739994779, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312749838156234284, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
+      propertyPath: m_Name
+      value: dpad_west
       objectReference: {fileID: 0}
     - target: {fileID: 2328550362007942015, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
       propertyPath: m_AnchorMax.y
@@ -184,6 +192,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -824229302780745415, guid: 4efa26c7a47f4a840a37261ca234475d, type: 3}
+    - target: {fileID: 4062157244205362064, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
+      propertyPath: m_Name
+      value: dpad_east
+      objectReference: {fileID: 0}
     - target: {fileID: 4743159173629922930, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -236,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -824229302780745415, guid: 4efa26c7a47f4a840a37261ca234475d, type: 3}
+    - target: {fileID: 7869604671650722366, guid: 968dcd9674303564e83e99be5d2323ea, type: 3}
+      propertyPath: m_Name
+      value: dpad_south
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

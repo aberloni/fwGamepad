@@ -30,4 +30,5 @@ namespace fwp.gamepad.layout
         public LayoutInputDpad getDpadSouth();
         public LayoutInputDpad getDpadWest();
     }
+
 }

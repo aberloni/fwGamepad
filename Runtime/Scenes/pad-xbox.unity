@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6343460172955730622, guid: 4ed65872c8f392a4db750c90b5e9f4ec, type: 3}
       propertyPath: m_Name
-      value: pad-action_xbox
+      value: dpad-action_xbox
       objectReference: {fileID: 0}
     - target: {fileID: 7002705754736411315, guid: 4ed65872c8f392a4db750c90b5e9f4ec, type: 3}
       propertyPath: m_Pivot.x
@@ -231,7 +231,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5680097983702425834, guid: 177ee73433f888949bc2c06db00bb0fd, type: 3}
       propertyPath: m_Name
-      value: pad_xbox
+      value: pad-button_xbox
       objectReference: {fileID: 0}
     - target: {fileID: 8643858656703963367, guid: 177ee73433f888949bc2c06db00bb0fd, type: 3}
       propertyPath: m_Pivot.x
@@ -422,7 +422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a971ea869a799ca409592b50dec4c3e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layout: {fileID: 0}
+  layout: {fileID: 11400000, guid: c8497552794a8f04a9af683b986e5a97, type: 2}
+  pads: {fileID: 1313878960}
+  dpads: {fileID: 709181426}
+  apply: 0
 --- !u!1 &1946354078
 GameObject:
   m_ObjectHideFlags: 0
