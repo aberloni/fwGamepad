@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace fwp.gamepad.blueprint
 {
@@ -8,10 +10,13 @@ namespace fwp.gamepad.blueprint
     {
         public InputSubsCallbacks subs = null; // reactor
 
+        public List<ControllerState> buffer = new();
+
         public Blueprint(InputSubsCallbacks callbacks = null)
         {
             subs = callbacks;
         }
+
         /// <summary>
         /// might wanna add diagonals ?
         /// </summary>
@@ -20,36 +25,29 @@ namespace fwp.gamepad.blueprint
         /// <summary>
         /// can add more buttons
         /// </summary>
-        abstract protected ControllerButtonState getButton(InputButtons type);
+        abstract protected ControllerButtonState getButton(InputActions type);
 
-        public void inject(InputDPad type, bool state)
+        abstract protected ControllerTriggerState getTrigger(InputTriggers type);
+
+        protected void addBuffer(ControllerState state)
         {
-            var tar = getDpad(type);
-            if (tar.inject(state))
-            {
-                log("dpad       " + type + "=" + state);
-                subs.onDPadPerformed?.Invoke(type, state);
-            }
+            buffer.Add(state.Clone());
+
+            //Debug.Log("+buffer " + buffer.Count);
         }
 
-        public void inject(InputButtons type, bool state)
+        public void inject(InputActions type, bool state)
         {
             var tar = getButton(type);
+
             if (tar.inject(state))
             {
                 log("button         " + type + "=" + state);
                 subs.onButtonPerformed?.Invoke(type, state);
+
+                // only press
+                if(state) addBuffer(tar);
             }
-        }
-
-        public void mimic(InputButtons type, bool state)
-        {
-            getButton(type).state = state;
-        }
-
-        public void mimic(InputDPad type, bool state)
-        {
-            getDpad(type).state = state;
         }
 
         virtual public void update(float dt)

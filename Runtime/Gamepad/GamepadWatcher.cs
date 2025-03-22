@@ -95,7 +95,6 @@ namespace fwp.gamepad
 
             subs.onTriggerPerformed += onTrigger;
             subs.onButtonPerformed += onButton;
-            subs.onDPadPerformed += onDPad;
 
             //Debug.Log("watcher:ON");
         }
@@ -110,7 +109,6 @@ namespace fwp.gamepad
             subs.onJoystickReleased -= onJoystickRelease;
             subs.onTriggerPerformed -= onTrigger;
             subs.onButtonPerformed -= onButton;
-            subs.onDPadPerformed -= onDPad;
         }
 
         public bool hasSelection() => targets.hasSomething();
@@ -126,7 +124,7 @@ namespace fwp.gamepad
             onJoystickRelease(InputJoystickSide.LEFT);
 
             // force a release
-            onButton(InputButtons.PAD_SOUTH, false);
+            onButton(InputActions.ACT_SOUTH, false);
         }
 
         public void queueReplace(ISelectable target)
@@ -246,7 +244,7 @@ namespace fwp.gamepad
             targets.onTrigger(side, value);
         }
 
-        private void onButton(InputButtons type, bool status)
+        private void onButton(InputActions type, bool status)
         {
             if (absorbs.onButton(type, status))
             {

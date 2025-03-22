@@ -5,8 +5,10 @@ using UnityEngine;
 namespace fwp.gamepad.state
 {
     [System.Serializable]
-    public class ControllerJoystickState
+    public class ControllerJoystickState : ControllerState
     {
+        public InputJoystickSide input;
+
         /// <summary>
         /// 1/X seconds
         /// 30f ~= 10 frames
@@ -42,6 +44,11 @@ namespace fwp.gamepad.state
         /// pressed a direction and quickly returned to neutral
         /// </summary>
         public bool Punch => timerPunch > 0f;
+
+        public ControllerJoystickState(InputJoystickSide side) : base(InputType.JOYS)
+        {
+            input = side;
+        }
 
         void setDirection(Vector2 value)
         {

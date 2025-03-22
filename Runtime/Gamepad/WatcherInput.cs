@@ -104,7 +104,7 @@ public class WatcherInput<SelectorType> where SelectorType : ISelectable
 
     // INPUTS
 
-    public bool onButton(InputButtons type, bool status)
+    public bool onButton(InputActions type, bool status)
     {
 
         for (int i = queue.Count - 1; i >= 0; i--)

@@ -198,11 +198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7002705754736411315, guid: 4ed65872c8f392a4db750c90b5e9f4ec, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -544
+      value: -437
       objectReference: {fileID: 0}
     - target: {fileID: 7002705754736411315, guid: 4ed65872c8f392a4db750c90b5e9f4ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 18
+      value: -264
       objectReference: {fileID: 0}
     - target: {fileID: 7002705754736411315, guid: 4ed65872c8f392a4db750c90b5e9f4ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -314,6 +314,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 377671516469724439, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 656490264926382281, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993685846243611819, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040902844093625465, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3302454591090969042, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
       propertyPath: m_Name
       value: joystick_right
@@ -321,6 +337,22 @@ PrefabInstance:
     - target: {fileID: 4710342305707290607, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
       propertyPath: m_text
       value: RS
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887452881946817898, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952510961294773128, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023666922260200919, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302032383465547384, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -406,11 +438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8643858656703963367, guid: 177ee73433f888949bc2c06db00bb0fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 475
+      value: 382
       objectReference: {fileID: 0}
     - target: {fileID: 8643858656703963367, guid: 177ee73433f888949bc2c06db00bb0fd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 31
+      value: 274
       objectReference: {fileID: 0}
     - target: {fileID: 8643858656703963367, guid: 177ee73433f888949bc2c06db00bb0fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -702,9 +734,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 377671516469724439, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 656490264926382281, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993685846243611819, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040902844093625465, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3302454591090969042, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
       propertyPath: m_Name
       value: joystick_left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887452881946817898, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952510961294773128, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957359285261063505, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023666922260200919, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302032383465547384, guid: d74515712a84ec84d8caac6c94f28642, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

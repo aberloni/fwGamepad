@@ -1,20 +1,22 @@
 ﻿namespace fwp.gamepad
 {
+    [System.Serializable]
     public enum InputType
     {
-        JOYS,     // [X,Y]
+        JOYS,           // [X,Y]
         ACTIONS,        // [press,release]
         TRIGGER,        // [0,1]
-        DPAD,           // directional, NESW
     }
 
     /// <summary>
     /// anything press/release
     /// </summary>
-    public enum InputButtons
+    [System.Serializable]
+    public enum InputActions
     {
         NONE,
-        PAD_NORTH, PAD_EAST, PAD_SOUTH, PAD_WEST, // actions
+        ACT_NORTH, ACT_EAST, ACT_SOUTH, ACT_WEST, // actions
+        ACT_DNORTH, ACT_DEAST, ACT_DSOUTH, ACT_DWEST, // dpad
         START, RETURN,
         BL, BR // bumper aka shoulder (top)
     }
@@ -22,6 +24,7 @@
     /// <summary>
     /// NESW must match PadSectionDirection
     /// </summary>
+    [System.Serializable]
     public enum InputDPad
     {
         NONE,
@@ -31,24 +34,18 @@
     /// <summary>
     /// [0,1]
     /// </summary>
+    [System.Serializable]
     public enum InputTriggers
     {
         NONE,
         LT, RT,
     }
 
+    [System.Serializable]
     public enum InputJoystickSide
     {
         NONE,
-        LEFT, RIGHT,
+        LEFT, RIGHT, DPAD
     }
 
-    /// <summary>
-    /// ↑ → ↓ ←
-    /// </summary>
-    public enum PadDirection
-    {
-        NONE, 
-        NORTH, EAST, SOUTH, WEST,
-    };
 }

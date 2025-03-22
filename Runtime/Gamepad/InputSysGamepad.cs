@@ -201,22 +201,22 @@ namespace fwp.gamepad
 
             action(MappingActions.bumperL).performed += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.BL, true);
+                controller.inject(InputActions.BL, true);
             };
 
             action(MappingActions.bumperL).canceled += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.BL, false);
+                controller.inject(InputActions.BL, false);
             };
 
             action(MappingActions.bumperR).performed += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.BR, true);
+                controller.inject(InputActions.BR, true);
             };
 
             action(MappingActions.bumperR).canceled += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.BR, false);
+                controller.inject(InputActions.BR, false);
             };
 
         }
@@ -255,56 +255,56 @@ namespace fwp.gamepad
 
             action(MappingActions.buttonStart).performed += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.START, true);
+                controller.inject(InputActions.START, true);
             };
 
             action(MappingActions.buttonStart).canceled += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.START, false);
+                controller.inject(InputActions.START, false);
             };
 
             // le bouton du nord parmis les XYBA
             action(MappingActions.buttonNorth).performed += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_NORTH, true);
+                controller.inject(InputActions.ACT_NORTH, true);
             };
 
             action(MappingActions.buttonNorth).canceled += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_NORTH, false);
+                controller.inject(InputActions.ACT_NORTH, false);
             };
 
             // le bouton du sud parmis les XYBA
             action(MappingActions.buttonSouth).performed += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_SOUTH, true);
+                controller.inject(InputActions.ACT_SOUTH, true);
             };
 
             action(MappingActions.buttonSouth).canceled += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_SOUTH, false);
+                controller.inject(InputActions.ACT_SOUTH, false);
             };
 
             // le bouton de gauche parmis les XYBA
             action(MappingActions.buttonWest).performed += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_WEST, true);
+                controller.inject(InputActions.ACT_WEST, true);
             };
 
             action(MappingActions.buttonWest).canceled += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_WEST, false);
+                controller.inject(InputActions.ACT_WEST, false);
             };
 
             // le bouton de droite parmis les XYBA
             action(MappingActions.buttonEast).performed += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_EAST, true);
+                controller.inject(InputActions.ACT_EAST, true);
             };
 
             action(MappingActions.buttonEast).canceled += (InputAction.CallbackContext ctx) =>
             {
-                controller.inject(InputButtons.PAD_EAST, false);
+                controller.inject(InputActions.ACT_EAST, false);
             };
 
         }

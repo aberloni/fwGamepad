@@ -40,7 +40,7 @@ namespace fwp.gamepad
         /// <summary>
         /// 
         /// </summary>
-        public void subButtons(bool sub, Action<InputButtons, bool> performed)
+        public void subButtons(bool sub, Action<InputActions, bool> performed)
         {
             if (sub)
             {
@@ -49,21 +49,6 @@ namespace fwp.gamepad
             else
             {
                 if (performed != null) controllerSubs.onButtonPerformed -= performed;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void subDPad(bool sub, Action<InputDPad, bool> performed)
-        {
-            if (sub)
-            {
-                if (performed != null) controllerSubs.onDPadPerformed += performed;
-            }
-            else
-            {
-                if (performed != null) controllerSubs.onDPadPerformed -= performed;
             }
         }
 

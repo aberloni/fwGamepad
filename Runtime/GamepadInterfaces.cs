@@ -86,7 +86,7 @@ namespace fwp.gamepad
 		/// <param name="type">Quel bouton a �t� utilis�</param>
 		/// <param name="status">true = button down, false = button up</param>
 		/// <returns>Stop event propagation</returns>
-		public bool onButton(InputButtons type, bool status);
+		public bool onButton(InputActions type, bool status);
 	}
 
 	/// <summary>

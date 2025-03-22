@@ -33,8 +33,7 @@ namespace fwp.gamepad.layout
 
             subs.onTriggerPerformed += onTrigger;
             subs.onButtonPerformed += onButton;
-            subs.onDPadPerformed += onDPad;
-
+            
             //Debug.Log("watcher:ON");
         }
 
@@ -48,7 +47,6 @@ namespace fwp.gamepad.layout
             subs.onJoystickReleased -= onJoystickRelease;
             subs.onTriggerPerformed -= onTrigger;
             subs.onButtonPerformed -= onButton;
-            subs.onDPadPerformed -= onDPad;
         }
 
         void onJoystickRelease(InputJoystickSide side)
@@ -59,32 +57,30 @@ namespace fwp.gamepad.layout
         void onJoystick(InputJoystickSide side, Vector2 value)
         {
             var f = getField<InputJoystickSide>(InputType.JOYS, side);
-            Debug.Log(f);
+            if (f is UiLayoutJoystick j) j.mimicRaw(value);
         }
 
         void onJoyDirection(InputJoystickSide side, Vector2 value)
         {
-            
+            var f = getField<InputJoystickSide>(InputType.JOYS, side);
+            if (f is UiLayoutJoystick j) j.mimicDirection(value);
         }
 
         void onJoyPunch(InputJoystickSide side, Vector2 value)
         {
-            
+            var f = getField<InputJoystickSide>(InputType.JOYS, side);
+            if (f is UiLayoutJoystick j) j.mimicPunch(value);
         }
 
         void onTrigger(InputTriggers side, float value)
         {
-            
+
         }
 
-        private void onButton(InputButtons type, bool status)
+        private void onButton(InputActions type, bool status)
         {
-            
-        }
-
-        private void onDPad(InputDPad type, bool status)
-        {
-            
+            var f = getField<InputActions>(InputType.ACTIONS, type);
+            if (f is UiLayoutField lyr) lyr.mimic(status);
         }
 
         private void OnValidate()
@@ -100,18 +96,21 @@ namespace fwp.gamepad.layout
         UiLayoutField getField<TType>(InputType cat, TType input)
         {
             var fields = GetComponentsInChildren<UiLayoutField>();
-            Debug.Log(input + " x" + fields.Length);
+            //Debug.Log(input + " x" + fields.Length);
 
-            foreach(var f in fields)
+            foreach (var f in fields)
             {
-                if(f.inputType == cat)
+                if (f.inputType == cat)
                 {
-                    if(f.name.EndsWith(input.ToString().ToLower()))
+                    if (f.name.EndsWith(input.ToString().ToLower()))
                     {
                         return f;
                     }
                 }
             }
+
+            Debug.LogWarning("no " + cat + " & " + input);
+
             return null;
         }
 
@@ -121,17 +120,12 @@ namespace fwp.gamepad.layout
             if (this.layout == null)
                 return;
 
-            Debug.Log("oly.apply "+layout.name, layout);
+            Debug.Log("oly.apply " + layout.name, layout);
 
-            if (pads != null)
-            {
-                foreach(var elmt in layout.getActions()) getField<InputButtons>(InputType.JOYS, elmt.input);
-            }
-
-            if(dpads != null)
-            {
-                foreach (var elmt in layout.getDpads()) getField<InputDPad>(InputType.DPAD, elmt.input);
-            }
+            foreach (var elmt in layout.getJoysticks()) 
+                getField<InputJoystickSide>(InputType.JOYS, elmt.input).setLayout(elmt);
+            foreach (var elmt in layout.getActions()) 
+                getField<InputActions>(InputType.ACTIONS, elmt.input).setLayout(elmt);
         }
 
         void applyField(Transform pivot, LayoutInputAction settings)

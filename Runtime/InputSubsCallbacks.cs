@@ -13,9 +13,9 @@ namespace fwp.gamepad
         public Action<InputJoystickSide, Vector2> onJoystickPerformed; // every frame the value changes
         public Action<InputJoystickSide> onJoystickReleased; // joystick went back to neutral
 
-        public Action<InputButtons, bool> onButtonPerformed;
+        public Action<InputActions, bool> onButtonPerformed;
         public Action<InputTriggers, float> onTriggerPerformed;
-        public Action<InputDPad, bool> onDPadPerformed;
+        
     }
 
 }
