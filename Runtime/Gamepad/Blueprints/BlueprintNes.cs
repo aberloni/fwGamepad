@@ -6,8 +6,17 @@ namespace fwp.gamepad.blueprint
 {
     using state;
 
+    /// <summary>
+    /// blueprint contains the state of the controller
+    /// funnel all events and solve various substate/event linked to keypressing
+    /// 
+    /// NES
+    ///     DPAD
+    ///     ACTIONS EW
+    ///     START/SELECT
+    /// </summary>
     [System.Serializable]
-    public class BlueprintNes
+    public class BlueprintNes : Blueprint
     {
 
         /// <summary>
@@ -32,17 +41,13 @@ namespace fwp.gamepad.blueprint
         public ControllerButtonState pad_south = new ControllerButtonState();  // A
         public ControllerButtonState pad_east = new ControllerButtonState();   // B
 
-        public InputSubsCallbacks subs = null; // reactor
-
-        public BlueprintNes(InputSubsCallbacks callbacks = null)
-        {
-            subs = callbacks;
-        }
+        public BlueprintNes(InputSubsCallbacks subs = null) : base(subs)
+        { }
 
         /// <summary>
         /// might wanna add diagonals ?
         /// </summary>
-        virtual protected ControllerButtonState getDpad(InputDPad type)
+        override protected ControllerButtonState getDpad(InputDPad type)
         {
             switch (type)
             {
@@ -57,7 +62,7 @@ namespace fwp.gamepad.blueprint
         /// <summary>
         /// can add more buttons
         /// </summary>
-        virtual protected ControllerButtonState getButton(InputButtons type)
+        override protected ControllerButtonState getButton(InputButtons type)
         {
             switch (type)
             {
@@ -67,39 +72,6 @@ namespace fwp.gamepad.blueprint
             return null;
         }
 
-        public void inject(InputDPad type, bool state)
-        {
-            var tar = getDpad(type);
-            if (tar.inject(state))
-            {
-                log("dpad       " + type + "=" + state);
-                subs.onDPadPerformed?.Invoke(type, state);
-            }
-        }
-
-        public void inject(InputButtons type, bool state)
-        {
-            var tar = getButton(type);
-            if (tar.inject(state))
-            {
-                log("button         " + type + "=" + state);
-                subs.onButtonPerformed?.Invoke(type, state);
-            }
-        }
-
-        public void mimic(InputButtons type, bool state)
-        {
-            getButton(type).state = state;
-        }
-        public void mimic(InputDPad type, bool state)
-        {
-            getDpad(type).state = state;
-        }
-
-        virtual public void update(float dt)
-        { }
-
-        protected void log(string content) => GamepadVerbosity.sLog(GetType() + " > " + content, this);
     }
 
 }

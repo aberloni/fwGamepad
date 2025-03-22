@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+using fwp.gamepad;
 using fwp.gamepad.layout;
 
+/// <summary>
+/// view
+/// </summary>
 public class UiLayoutField : MonoBehaviour
 {
+    public InputType inputType;
+
     Image image;
     TMPro.TextMeshProUGUI text;
     CanvasGroup group;

@@ -6,6 +6,11 @@ namespace fwp.gamepad.blueprint
 {
     using state;
 
+    /// <summary>
+    /// NES
+    /// +shoulders
+    /// +NS actions
+    /// </summary>
     [System.Serializable]
     public class BlueprintSnes : BlueprintNes
     {

@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace fwp.gamepad
 {
-    using blueprint;
-
     /// <summary>
-    /// this is a wrapper to which you give a target
-    /// and that target will receive inputs
+    /// Selector/Watcher : manage list of targets taht will receive inputs
+    /// transfert input to specific selected entities
     /// </summary>
     public class GamepadWatcher : MonoBehaviour
     {
@@ -88,7 +86,7 @@ namespace fwp.gamepad
 
         void setupCallbacks()
         {
-            InputSubsCallbacks subs = playerInputSys.subs;
+            var subs = playerInputSys.subs;
 
             subs.onJoystickPerformed += onJoystick;
             subs.onJoystickReleased += onJoystickRelease;
@@ -104,7 +102,7 @@ namespace fwp.gamepad
 
         public void clearCallbacks()
         {
-            InputSubsCallbacks subs = playerInputSys.subs;
+            var subs = playerInputSys.subs;
 
             subs.onJoystickDirection -= onJoyDirection;
             subs.onJoystickPerformed -= onJoystick;

@@ -2,33 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 
 namespace fwp.gamepad
 {
     /// <summary>
     /// where the mapping with InputSystem is made
     /// 
-    /// mono to select type of controller
-    /// and provide entry points for inputs
-    /// inherit and use subs
-    /// 
-    /// https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.PlayerInput.html
-    /// https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/Devices.html
-    /// 
     /// this is where InputSubs is sub to InputSystem
     /// any external object can use the ref of the subs to sub to it
     /// 
+    /// this will sub callbacks to InputSystem
+    /// and inject input into a "blueprint" controller
+    /// that will solve input and trigger subs callbacks
+    /// 
+    /// mono to select type of controller
+    /// and provide entry points for inputs
+    /// 
     /// # unity.documentation
     /// 
+    /// https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.PlayerInput.html
+    /// https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/Devices.html
     /// https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/Layouts.html
     /// 
     /// </summary>
     public class InputSysGamepad : MonoBehaviour
     {
         /// <summary>
-        /// when InputSystem triggers it will activates the callbacks
-        /// within this InputSubs
+        /// first layer after InputSystem and lib
+        /// transfert to blueprint to solve additionnal potential events
+        /// down the line it's the blueprint that will trigger callbacks
+        /// 
+        /// sub to this object to get callbacks from blueprint solving
+        /// TODO : allow RAW signal subing to go around blueprint
         /// </summary>
         public InputSubsCallbacks subs;
 
@@ -81,13 +86,24 @@ namespace fwp.gamepad
         /// </summary>
         public InputController controllerType;
 
+        /// <summary>
+        /// unity.device > handle of matching device in Unity's enviro
+        /// </summary>
         public InputDevice sysDevice;
-        public PlayerInput sysPlayerInput; // unity.PlayerInput > link with unity InputSystem
-
-        blueprint.BlueprintXbox controller; // last known state
 
         /// <summary>
-        /// internal controller state
+        /// unity.PlayerInput > link with unity InputSystem
+        /// </summary>
+        public PlayerInput sysPlayerInput;
+
+        /// <summary>
+        /// wrapper containing solved state of the controller after inputs
+        /// last known state
+        /// </summary>
+        blueprint.BlueprintXbox controller;
+
+        /// <summary>
+        /// shk, to access internal controller state
         /// </summary>
         public blueprint.BlueprintXbox Controller => controller;
 

@@ -8,6 +8,8 @@ namespace fwp.gamepad.blueprint
 
     /// <summary>
     /// dual stick mapping
+    /// +triggers
+    /// +dpad
     /// </summary>
     [System.Serializable]
     public class BlueprintXbox : BlueprintSnes

@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace fwp.gamepad.layout
 {
 
@@ -11,11 +12,107 @@ namespace fwp.gamepad.layout
 
         public bool apply = false;
 
+        InputSysGamepad sysGamepad;
+
+        private void Start()
+        {
+            sysGamepad = GameObject.FindObjectOfType<InputSysGamepad>();
+            Debug.Assert(sysGamepad != null, "no sys gamepad ?");
+
+            setupCallbacks();
+        }
+
+        void setupCallbacks()
+        {
+            var subs = sysGamepad.subs;
+
+            subs.onJoystickPerformed += onJoystick;
+            subs.onJoystickReleased += onJoystickRelease;
+            subs.onJoystickDirection += onJoyDirection;
+            subs.onJoystickPunchDirection += onJoyPunch;
+
+            subs.onTriggerPerformed += onTrigger;
+            subs.onButtonPerformed += onButton;
+            subs.onDPadPerformed += onDPad;
+
+            //Debug.Log("watcher:ON");
+        }
+
+        public void clearCallbacks()
+        {
+            var subs = sysGamepad.subs;
+
+            subs.onJoystickDirection -= onJoyDirection;
+            subs.onJoystickPerformed -= onJoystick;
+
+            subs.onJoystickReleased -= onJoystickRelease;
+            subs.onTriggerPerformed -= onTrigger;
+            subs.onButtonPerformed -= onButton;
+            subs.onDPadPerformed -= onDPad;
+        }
+
+        void onJoystickRelease(InputJoystickSide side)
+        {
+            onJoystick(side, Vector2.zero);
+        }
+
+        void onJoystick(InputJoystickSide side, Vector2 value)
+        {
+            var f = getField<InputJoystickSide>(InputType.JOYS, side);
+            Debug.Log(f);
+        }
+
+        void onJoyDirection(InputJoystickSide side, Vector2 value)
+        {
+            
+        }
+
+        void onJoyPunch(InputJoystickSide side, Vector2 value)
+        {
+            
+        }
+
+        void onTrigger(InputTriggers side, float value)
+        {
+            
+        }
+
+        private void onButton(InputButtons type, bool status)
+        {
+            
+        }
+
+        private void onDPad(InputDPad type, bool status)
+        {
+            
+        }
+
         private void OnValidate()
         {
             applyLayout(layout);
 
             apply = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        UiLayoutField getField<TType>(InputType cat, TType input)
+        {
+            var fields = GetComponentsInChildren<UiLayoutField>();
+            Debug.Log(input + " x" + fields.Length);
+
+            foreach(var f in fields)
+            {
+                if(f.inputType == cat)
+                {
+                    if(f.name.EndsWith(input.ToString().ToLower()))
+                    {
+                        return f;
+                    }
+                }
+            }
+            return null;
         }
 
         void applyLayout(DataGamepadLayout layout)
@@ -28,20 +125,13 @@ namespace fwp.gamepad.layout
 
             if (pads != null)
             {
-                foreach(var elmt in layout.getActions()) applyField<InputButtons>(elmt);
+                foreach(var elmt in layout.getActions()) getField<InputButtons>(InputType.JOYS, elmt.input);
             }
 
             if(dpads != null)
             {
-                foreach (var elmt in layout.getDpads()) applyField<InputDPad>(elmt);
+                foreach (var elmt in layout.getDpads()) getField<InputDPad>(InputType.DPAD, elmt.input);
             }
-        }
-
-        void applyField<T>(LayoutInput<T> settings)
-        {
-            Debug.Log(settings.input);
-            Transform target = pads.transform.Find(settings.input.ToString().ToLower());
-            applyField(target, settings as LayoutInputAction);
         }
 
         void applyField(Transform pivot, LayoutInputAction settings)

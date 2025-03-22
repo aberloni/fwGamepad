@@ -2,7 +2,7 @@
 {
     public enum InputType
     {
-        JOYL, JOYR,     // [X,Y]
+        JOYS,     // [X,Y]
         ACTIONS,        // [press,release]
         TRIGGER,        // [0,1]
         DPAD,           // directional, NESW
