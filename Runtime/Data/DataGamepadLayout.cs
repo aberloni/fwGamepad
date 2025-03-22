@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 namespace fwp.gamepad.layout
 {
+    using fwp.gamepad.state;
+
     /// <summary>
     /// image & labels assigned to a gamepad
     /// for each button/input/interactions
@@ -25,15 +27,28 @@ namespace fwp.gamepad.layout
         /// dpad
         /// </summary>
         [SerializeField]
-        List<LayoutInputDpad> dpads = new();
+        List<LayoutInputAction> dpads = new();
 
         public LayoutInputJoystick get(InputJoystickSide input) => joysticks[((int)input) - 1];
-        public LayoutInputDpad get(InputDPad input) => dpads[((int)input) - 1];
-        public LayoutInputAction get(InputButtons input) => actions[((int)input) - 1];
+        public LayoutInputAction get(InputDPad input) => dpads[((int)input) - 1];
+        public LayoutInputAction get(InputActions input) => actions[((int)input) - 1];
 
         abstract public LayoutInputJoystick[] getJoysticks();
-        abstract public LayoutInputDpad[] getDpads();
+        abstract public LayoutInputAction[] getDpads();
         abstract public LayoutInputAction[] getActions();
+
+        virtual public LayoutField getStateField(ControllerState state)
+        {
+            if (state is ControllerJoystickState j)
+            {
+                return get(j.input);
+            }
+            if(state is ControllerButtonState b)
+            {
+                return get(b.input);
+            }
+            return null;
+        }
 
         public void addSticks<T>() where T : System.Enum
         {
@@ -42,11 +57,11 @@ namespace fwp.gamepad.layout
             foreach(T item in System.Enum.GetValues(t)) addJoystick((InputJoystickSide)(object)item);
         }
 
-        public void addPads<T>() where T : System.Enum
+        public void addActions<T>() where T : System.Enum
         {
             System.Type t = typeof(T);
             Debug.Assert(t.IsEnum, "not enum ?");
-            foreach (T item in System.Enum.GetValues(t)) addPad((InputButtons)(object)item);
+            foreach (T item in System.Enum.GetValues(t)) addAction((InputActions)(object)item);
         }
 
         public void addDpads<T>() where T : System.Enum
@@ -62,16 +77,22 @@ namespace fwp.gamepad.layout
             joysticks.Add(new LayoutInputJoystick(val));
         }
 
-        public void addPad(InputButtons val)
+        public void addAction(InputActions val)
         {
-            if (val == InputButtons.NONE) return;
+            if (val == InputActions.NONE) return;
             actions.Add(new LayoutInputAction(val));
         }
 
         public void addDpad(InputDPad val)
         {
             if (val == InputDPad.NONE) return;
-            dpads.Add(new LayoutInputDpad(val));
+            switch (val)
+            {
+                case InputDPad.DPAD_NORTH:dpads.Add(new LayoutInputAction(InputActions.ACT_DNORTH));break;
+                case InputDPad.DPAD_SOUTH: dpads.Add(new LayoutInputAction(InputActions.ACT_DSOUTH)); break;
+                case InputDPad.DPAD_EAST: dpads.Add(new LayoutInputAction(InputActions.ACT_DEAST)); break;
+                case InputDPad.DPAD_WEST: dpads.Add(new LayoutInputAction(InputActions.ACT_DWEST)); break;
+            }
         }
     }
 
@@ -84,13 +105,14 @@ namespace fwp.gamepad.layout
     }
 
     [System.Serializable]
-    public class LayoutInputAction : LayoutInput<InputButtons>
+    public class LayoutInputAction : LayoutInput<InputActions>
     {
-        public LayoutInputAction(InputButtons input) : base(input)
+        public LayoutInputAction(InputActions input) : base(input)
         {
         }
     }
 
+    /*
     [System.Serializable]
     public class LayoutInputDpad : LayoutInput<InputDPad>
     {
@@ -98,6 +120,7 @@ namespace fwp.gamepad.layout
         {
         }
     }
+    */
 
     [System.Serializable]
     abstract public class LayoutInput<TInput> : LayoutField

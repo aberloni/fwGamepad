@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fcc1adaa49d3c49858c59b67f0a7c8, type: 3}
+  m_Name: buffer_icons
+  m_EditorClassIdentifier: 
+  actions:
+  - input: 1
+    icon: {fileID: 1251658525800969053, guid: a0e451f951433ef4983688a7dc178855, type: 3}
+  - input: 3
+    icon: {fileID: -1957977172505018941, guid: 0c04801eb6e4ce7448d381f86af2465f, type: 3}
+  directions:
+  - joystick: 1
+    icon: {fileID: -7319096969734323136, guid: d1afa9c24d04a534f99ec91605197d97, type: 3}
+    direction: {x: 0, y: 1}
+  - joystick: 1
+    icon: {fileID: -3729192615886971682, guid: 07021de99a287804c968e2f5b6788674, type: 3}
+    direction: {x: 1, y: 0}
+  - joystick: 1
+    icon: {fileID: 9004958362844561699, guid: 07d1ce98bc1454c4ba20120be40e80e1, type: 3}
+    direction: {x: 0, y: -1}
+  - joystick: 1
+    icon: {fileID: 1262941866417799605, guid: 8fae0bcce125cb0478b324f36dc1d4f6, type: 3}
+    direction: {x: -1, y: 0}

@@ -19,31 +19,46 @@ MonoBehaviour:
   - label: RIGHT
     icon: {fileID: 0}
     input: 2
-  actions:
-  - label: PAD_NORTH
-    icon: {fileID: 1251658525800969053, guid: a0e451f951433ef4983688a7dc178855, type: 3}
-    input: 1
-  - label: PAD_EAST
-    icon: {fileID: -1600616193956952614, guid: fa9303ef8c72d1f40963fbae2bbbd69d, type: 3}
-    input: 2
-  - label: PAD_SOUTH
-    icon: {fileID: -1957977172505018941, guid: 0c04801eb6e4ce7448d381f86af2465f, type: 3}
+  - label: DPAD
+    icon: {fileID: 0}
     input: 3
-  - label: PAD_WEST
-    icon: {fileID: -4145643799574848775, guid: f58bdb2922cba70438319b64229c0051, type: 3}
+  actions:
+  - label: ACT_NORTH
+    icon: {fileID: 0}
+    input: 1
+  - label: ACT_EAST
+    icon: {fileID: 0}
+    input: 2
+  - label: ACT_SOUTH
+    icon: {fileID: 0}
+    input: 3
+  - label: ACT_WEST
+    icon: {fileID: 0}
     input: 4
-  - label: START
+  - label: ACT_DNORTH
     icon: {fileID: 0}
     input: 5
-  - label: RETURN
+  - label: ACT_DEAST
     icon: {fileID: 0}
     input: 6
-  - label: BL
+  - label: ACT_DSOUTH
     icon: {fileID: 0}
     input: 7
-  - label: BR
+  - label: ACT_DWEST
     icon: {fileID: 0}
     input: 8
+  - label: START
+    icon: {fileID: 0}
+    input: 9
+  - label: RETURN
+    icon: {fileID: 0}
+    input: 10
+  - label: BL
+    icon: {fileID: 0}
+    input: 11
+  - label: BR
+    icon: {fileID: 0}
+    input: 12
   dpads:
   - label: DPAD_NORTH
     icon: {fileID: 0}

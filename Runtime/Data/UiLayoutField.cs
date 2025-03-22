@@ -2,31 +2,31 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using fwp.gamepad;
+using fwp.gamepad.state;
 using fwp.gamepad.layout;
 
 /// <summary>
 /// view
 /// </summary>
-public class UiLayoutField : MonoBehaviour
+public class UiLayoutField : UiLayoutIcon
 {
     public InputType inputType;
 
-    Image image;
-    TMPro.TextMeshProUGUI text;
-    CanvasGroup group;
+    public TMPro.TextMeshProUGUI text;
 
-    void Start()
+    override protected void fetch()
     {
-        image = GetComponentInChildren<Image>();
-        text = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-        group = gameObject.AddComponent<CanvasGroup>();
+        base.fetch();
+        if (text == null) text = GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
-    public void apply(LayoutField layout)
+    public void setLayout(LayoutField field)
     {
-        image.sprite = layout.getIcon();
-        text.SetText(layout.getLabel());
+        if (!Application.isPlaying) fetch();
+        
+        applyIcon(field.getIcon());
+
+        if (text != null) text.SetText(field.getLabel());
     }
 
 }

@@ -25,10 +25,10 @@ namespace fwp.gamepad.layout
 
     public interface LayoutJoystickDirectionalPad
     {
-        public LayoutInputDpad getDpadNorth();
-        public LayoutInputDpad getDpadEast();
-        public LayoutInputDpad getDpadSouth();
-        public LayoutInputDpad getDpadWest();
+        public LayoutInputAction getDpadNorth();
+        public LayoutInputAction getDpadEast();
+        public LayoutInputAction getDpadSouth();
+        public LayoutInputAction getDpadWest();
     }
 
 }

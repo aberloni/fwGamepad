@@ -4,5 +4,5 @@ using fwp.gamepad;
 
 public class UiLayoutButton : UiLayoutField
 {
-    public InputButtons input;
+    public InputActions input;
 }
