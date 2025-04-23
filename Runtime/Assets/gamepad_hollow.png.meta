@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gamepad_hollow_0: 3323359572402765030
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
