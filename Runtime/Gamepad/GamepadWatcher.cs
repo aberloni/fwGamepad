@@ -264,8 +264,16 @@ namespace fwp.gamepad
             targets.onDPad(type, status);
         }
 
+        public string stringify()
+        {
+            string ret = name;
+			if (targets != null) ret += "\n" + targets.stringify();
+			if (absorbs != null) ret += "\n" + absorbs.stringify();
+            return ret;
+		}
+
         [ContextMenu("log")]
-        void cmLog()
+        public void cmLog()
         {
             Debug.Log(name, this);
             if (targets != null) Debug.Log(targets.stringify());
