@@ -10,6 +10,8 @@ namespace fwp.gamepad
     /// </summary>
     public class GamepadWatcher : MonoBehaviour
     {
+        public bool verbose = false;
+
         [Header("refs")]
 
         public InputSysGamepad playerInputSys; // the bridge that will sub to InputSystem (specific to each player)
@@ -149,9 +151,9 @@ namespace fwp.gamepad
                 bubbleNeutral();
             }
 
-            if(target is ISelectableAbsorb)
+            if (target is ISelectableAbsorb)
             {
-                if(absorbs.queueSelection(target as ISelectableAbsorb))
+                if (absorbs.queueSelection(target as ISelectableAbsorb))
                 {
                     reactQueue(target);
                 }
@@ -177,7 +179,7 @@ namespace fwp.gamepad
                 return;
             }
 
-            if(target is ISelectableAbsorb)
+            if (target is ISelectableAbsorb)
             {
                 if (absorbs.unqueueSelection(target as ISelectableAbsorb))
                 {
@@ -210,6 +212,7 @@ namespace fwp.gamepad
 
         void onJoystick(InputJoystickSide side, Vector2 value)
         {
+            log("joy." + side + "." + value);
             if (absorbs.onJoystick(side, value))
             {
                 return;
@@ -220,6 +223,8 @@ namespace fwp.gamepad
 
         void onJoyDirection(InputJoystickSide side, Vector2 value)
         {
+            log("direction." + side + "." + value);
+
             if (absorbs.onJoystickDirection(side, value))
             {
                 return;
@@ -230,12 +235,16 @@ namespace fwp.gamepad
 
         void onJoyPunch(InputJoystickSide side, Vector2 value)
         {
+            log("punch." + side + "." + value);
+
             if (absorbs.onJoystickPunch(side, value)) return;
             targets.onJoystickPunch(side, value);
         }
 
         void onTrigger(InputTriggers side, float value)
         {
+            log(side + "." + value);
+
             if (absorbs.onTrigger(side, value))
             {
                 return;
@@ -246,6 +255,8 @@ namespace fwp.gamepad
 
         private void onButton(InputActions type, bool status)
         {
+            log("button." + type + "." + status);
+
             if (absorbs.onButton(type, status))
             {
                 return;
@@ -254,23 +265,13 @@ namespace fwp.gamepad
             targets.onButton(type, status);
         }
 
-        private void onDPad(InputDPad type, bool status)
-        {
-            if (absorbs.onDPad(type, status))
-            {
-                return;
-            }
-
-            targets.onDPad(type, status);
-        }
-
         public string stringify()
         {
             string ret = name;
-			if (targets != null) ret += "\n" + targets.stringify();
-			if (absorbs != null) ret += "\n" + absorbs.stringify();
+            if (targets != null) ret += "\n" + targets.stringify();
+            if (absorbs != null) ret += "\n" + absorbs.stringify();
             return ret;
-		}
+        }
 
         [ContextMenu("log")]
         public void cmLog()
@@ -278,6 +279,11 @@ namespace fwp.gamepad
             Debug.Log(name, this);
             if (targets != null) Debug.Log(targets.stringify());
             if (absorbs != null) Debug.Log(absorbs.stringify());
+        }
+
+        void log(string msg)
+        {
+            Debug.Log("[INPUT.WATCHER]      " + msg, this);
         }
     }
 }
