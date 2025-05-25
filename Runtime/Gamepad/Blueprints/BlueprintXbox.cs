@@ -63,7 +63,7 @@ namespace fwp.gamepad.blueprint
         {
             base.update(dt);
 
-            updateJoystick(InputJoystickSide.LEFT, dpadJoy, dt);
+            updateJoystick(InputJoystickSide.LEFT, leftJoy, dt);
             updateJoystick(InputJoystickSide.RIGHT, rightJoy, dt);
         }
 

@@ -101,6 +101,9 @@ namespace fwp.gamepad.state
             return false;
         }
 
+        /// <summary>
+        /// something changed
+        /// </summary>
         public bool updateIntention(float dt)
         {
             if (joystick != joystickIntention)

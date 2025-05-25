@@ -46,7 +46,7 @@ namespace fwp.gamepad.blueprint
         public BlueprintNes(InputSubsCallbacks subs = null) : base(subs)
         { }
 
-        
+
         virtual protected ControllerJoystickState getJoystick(InputJoystickSide side)
         {
             switch (side)
@@ -151,10 +151,11 @@ namespace fwp.gamepad.blueprint
 
         protected void updateJoystick(InputJoystickSide side, ControllerJoystickState j, float dt)
         {
-
             j.updateTimer(dt);
 
-            if (j.updateIntention(dt) && subs != null)
+            //Debug.Log(side + " & " + j.joystick);
+
+            if (j.updateIntention(dt))
             {
                 solveCallbacks(side, j);
             }
@@ -164,6 +165,8 @@ namespace fwp.gamepad.blueprint
 
         void solveCallbacks(InputJoystickSide side, ControllerJoystickState j)
         {
+            if (subs == null)
+                return;
 
             if (j.joystick.sqrMagnitude == 0f)
             {
