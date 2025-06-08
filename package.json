@@ -1,6 +1,6 @@
 {
   "name": "com.ab.fwp.gamepad",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "displayName": "ab:gamepad",
   "description": "framework for inputs",
   "keywords": [
