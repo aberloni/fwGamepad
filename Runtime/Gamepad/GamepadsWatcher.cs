@@ -75,7 +75,7 @@ namespace fwp.gamepad
             var cs = GetComponentsInChildren<GamepadWatcher>();
             foreach (var c in cs)
             {
-                if (c.isPlugged)
+                if (c.IsPlugged)
                 {
                     controllers.Add(c);
                 }
@@ -89,7 +89,7 @@ namespace fwp.gamepad
             int cnt = 0;
             foreach (var c in controllers)
             {
-                if (c.isPlugged) cnt++;
+                if (c.IsPlugged) cnt++;
             }
             return cnt;
         }
