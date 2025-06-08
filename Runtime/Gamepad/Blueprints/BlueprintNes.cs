@@ -77,20 +77,26 @@ namespace fwp.gamepad.blueprint
         }
 
         /// <summary>
-        /// can add more buttons
+        /// declare all buttons of this layout here
         /// </summary>
         override protected ControllerButtonState getButton(InputActions type)
         {
             switch (type)
             {
+                // pad A,B
                 case InputActions.ACT_SOUTH: return pad_south;
                 case InputActions.ACT_EAST: return pad_east;
-
-                case InputActions.ACT_DNORTH: return dpad_north;
+				
+                // dpad
+				case InputActions.ACT_DNORTH: return dpad_north;
                 case InputActions.ACT_DEAST: return dpad_east;
                 case InputActions.ACT_DSOUTH: return dpad_south;
                 case InputActions.ACT_DWEST: return dpad_west;
-            }
+
+                // others
+                case InputActions.START: return start;
+				case InputActions.RETURN: return back;
+			}
             return null;
         }
 
