@@ -303,6 +303,12 @@ namespace fwp.gamepad
 			return ret;
 		}
 
+		void log(string msg)
+		{
+			if (!verbose) return;
+			Debug.Log("[INPUT.WATCHER]      " + msg, this);
+		}
+
 		[ContextMenu("log")]
 		public void cmLog()
 		{
@@ -310,11 +316,6 @@ namespace fwp.gamepad
 			if (IsLocked) Debug.Log("LOCKED, x" + lockers.Count);
 			if (targets != null) Debug.Log(targets.stringify());
 			if (absorbs != null) Debug.Log(absorbs.stringify());
-		}
-
-		void log(string msg)
-		{
-			Debug.Log("[INPUT.WATCHER]      " + msg, this);
 		}
 
 		[ContextMenu("check plugged ?")]
