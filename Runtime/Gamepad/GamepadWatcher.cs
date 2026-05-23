@@ -310,8 +310,8 @@ namespace fwp.gamepad
 		virtual public string ToString()
 		{
 			return name + "<" + GetType() + ">"
-			+ locked ? " +locked" : string.Empty
-			+ IsPrimary ? " +primay" : string.Empty;
+				+ (IsLocked ? " +locked" : string.Empty)
+				+ (IsPrimary ? " +primay" : string.Empty);
 		}
 
 		public string stringify()
