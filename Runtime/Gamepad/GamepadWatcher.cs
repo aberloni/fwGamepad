@@ -69,7 +69,20 @@ namespace fwp.gamepad
 			}
 		}
 
-		public bool isPrimary => playerInputSys.controllerType == InputSysGamepad.InputController.gamepad_0;
+		public bool IsPrimary
+		{
+			get
+			{
+				switch (playerInputSys.controllerType)
+				{
+					case InputSysGamepad.InputController.gamepad_0:
+					case InputSysGamepad.InputController.keyboard:
+					case InputSysGamepad.InputController.any:
+						return true;
+				}
+				return false;
+			}
+		}
 
 		private void Awake()
 		{
@@ -294,12 +307,16 @@ namespace fwp.gamepad
 			targets.onButton(type, status);
 		}
 
+		public string ToString()
+		{
+			return name + " locked?" + IsLocked;
+		}
+
 		public string stringify()
 		{
-			string ret = name;
-			if (IsLocked) ret += " LOCKED";
-			if (targets != null) ret += "\n" + targets.stringify();
-			if (absorbs != null) ret += "\n" + absorbs.stringify();
+			string ret = ToString();
+			if (targets != null) ret += "\n[targets x" + targets.Count + "] " + targets.stringify();
+			if (absorbs != null) ret += "\n[absorbs x" + absorbs.Count + "] " + absorbs.stringify();
 			return ret;
 		}
 

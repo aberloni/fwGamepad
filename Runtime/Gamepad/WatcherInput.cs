@@ -20,6 +20,11 @@ public class WatcherInput<SelectorType> where SelectorType : ISelectable
 	public bool hasSomething() => queue.Count > 0;
 
 	/// <summary>
+	/// quantity of objects queued
+	/// </summary>
+	public int Count => queue != null ? queue.Count : 0;
+	
+	/// <summary>
 	/// deselect next frame
 	/// </summary>
 	public void deselectAll()
