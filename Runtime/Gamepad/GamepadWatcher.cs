@@ -307,9 +307,11 @@ namespace fwp.gamepad
 			targets.onButton(type, status);
 		}
 
-		public string ToString()
+		virtual public string ToString()
 		{
-			return name + " locked?" + IsLocked;
+			return name + "<" + GetType() + ">"
+			+ locked ? " +locked" : string.Empty
+			+ IsPrimary ? " +primay" : string.Empty;
 		}
 
 		public string stringify()

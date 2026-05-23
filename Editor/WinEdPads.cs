@@ -31,7 +31,7 @@ public class WinEdPads : EditorWindow
 
         foreach (var w in watchers)
         {
-            GUILayout.Label(w.ToString());
+            if (w == null) continue;
             GUILayout.Label(w.stringify());
         }
     }
