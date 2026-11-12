@@ -171,9 +171,11 @@ namespace fwp.gamepad
 
             switch (device)
             {
+                case InputController.any:
                 case InputController.gamepad_0:
                     if (Gamepad.all.Count > 0) return Gamepad.all[0];
 
+                    // fallback is keyboard
                     device = InputController.keyboard;
                     Debug.LogWarning("no gamepad for #0 : <color=orange>using keyboard instead</color>");
 
@@ -188,8 +190,8 @@ namespace fwp.gamepad
                 return Keyboard.current;
             }
 
+            // some details when is fails
             Debug.LogWarning("could not solve device @ " + device, this);
-            //Debug.LogWarning("gamepad x" + Gamepad.all.Count);
             logDevices();
 
             return null;
