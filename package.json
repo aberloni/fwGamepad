@@ -1,6 +1,6 @@
 {
   "name": "com.ab.fwp.gamepad",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "displayName": "ab:gamepad",
   "description": "framework for inputs",
   "keywords": [
@@ -14,8 +14,9 @@
   },
   "author": {
     "name": "Andrei Berloni",
-    "email": "dev@andreberlemont.com",
-    "url": "http://www.andreberlemont.com"
+    "url": "http://www.andreberlemont.com",
+    "email": "dev@andreberlemont.com"
   },
-  "type": "library"
+  "type": "library",
+  "unity": "6000.0"
 }
