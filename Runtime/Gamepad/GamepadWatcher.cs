@@ -307,11 +307,11 @@ namespace fwp.gamepad
 			targets.onButton(type, status);
 		}
 
-		virtual public string ToString()
-		{
+        public override string ToString()
+        {
 			return name + "<" + GetType() + ">"
 				+ (IsLocked ? " +locked" : string.Empty)
-				+ (IsPrimary ? " +primay" : string.Empty);
+				+ (IsPrimary ? " +primary" : string.Empty);
 		}
 
 		public string stringify()

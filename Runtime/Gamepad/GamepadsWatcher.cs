@@ -13,16 +13,34 @@ namespace fwp.gamepad
     public class GamepadsWatcher : MonoBehaviour
     {
         static GamepadsWatcher _instance;
-        static public GamepadsWatcher instance
+        static public GamepadsWatcher instance => _instance;
+
+        /// <summary>
+        /// generate from Resources (if available)
+        /// </summary>
+        static public GamepadsWatcher fetch()
+        {
+            if (_instance != null) return _instance;
+
+            // generate from resources
+            var obj = Resources.Load("System/[INPUTS]");
+            if (obj == null)
+            {
+                return null;
+            }
+
+            // this resource HAS <GamepadsWatcher> attached
+            // and assign itself to instance during Awake()
+            GameObject.Instantiate(obj);
+
+            return _instance;
+        }
+
+        static public bool IsReady
         {
             get
             {
-                if (_instance != null)
-                    return _instance;
-                var obj = Resources.Load("System/[INPUTS]");
-                var go = GameObject.Instantiate(obj) as GameObject;
-                _instance = go.GetComponent<GamepadsWatcher>();
-                return _instance;
+                return _instance != null;
             }
         }
 
@@ -58,6 +76,7 @@ namespace fwp.gamepad
                 return;
             }
 
+            _instance = this;
             DontDestroyOnLoad(this);
 
             controllers.AddRange(GetComponentsInChildren<GamepadWatcher>());
