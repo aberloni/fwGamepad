@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 namespace fwp.gamepad
 {
     /// <summary>
-    /// bridge to provide acces to any controller
+    /// bridge to provide access to any controller
     /// </summary>
     public class GamepadsWatcher : MonoBehaviour
     {
@@ -44,7 +44,7 @@ namespace fwp.gamepad
             }
         }
 
-        List<GamepadWatcher> controllers = new List<GamepadWatcher>();
+        List<GamepadWatcher> controllers = new();
 
         public ReadOnlyCollection<GamepadWatcher> pluggedControllers
         {
